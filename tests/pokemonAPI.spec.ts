@@ -26,5 +26,8 @@ test.describe('pokémon Api',{
         const versionData = await request.get(pokemonVersion);
         const version = await versionData.json()    
         console.log("version data ",version);
+
+        const versionEmrald = version.results[8].name;
+        console.log("version emerald ",versionEmrald);
     })
 })
