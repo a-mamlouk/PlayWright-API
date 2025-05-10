@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { CountriesResponse } from "./type/apiResponse"
 
 test(' req Graph QL', async ({ request }) => {
     const allCountriesResponse = await request.post('https://countries.trevorblades.com/', {
@@ -17,9 +18,10 @@ test(' req Graph QL', async ({ request }) => {
         }
     })
 
-    const allCountries = await allCountriesResponse.json()
+    const allCountries : CountriesResponse = await allCountriesResponse.json()
     expect(allCountriesResponse.status()).toBe(200)
     expect(allCountries.data.countries).toHaveLength(250)
+    await console.log(allCountries.data.countries)
 })
 
 test('Filter Country', async ({ request }) => {
@@ -39,7 +41,7 @@ test('Filter Country', async ({ request }) => {
         }
     })
 
-    const countryData = await countryResponse.json()
+    const countryData : CountriesResponse = await countryResponse.json()
     expect(countryResponse.status()).toBe(200)
     expect(countryData.data.countries).toHaveLength(1)
     expect(countryData.data.countries[0].code).toBe('TN')
