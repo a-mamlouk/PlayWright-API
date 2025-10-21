@@ -8,7 +8,7 @@
   "license": "ISC",
   "description": "Chuck Norris Jokes and a GRAphQL API",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.56.1",
     "@types/node": "^22.13.0"
   }
 }
