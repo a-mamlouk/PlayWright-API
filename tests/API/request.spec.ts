@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test"
-import { CountriesResponse } from "./type/apiResponse"
+import { CountriesResponse } from "../type/apiResponse"
 
 test(' req Graph QL', async ({ request }) => {
     const allCountriesResponse = await request.post('https://countries.trevorblades.com/', {

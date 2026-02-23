@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { ChuckNorrisJoke } from "./type/apiResponse";
+import { ChuckNorrisJoke } from "../type/apiResponse";
 
 test.describe.configure({ mode: 'serial' });
 test.describe('retrieve Chuck Norris joke',{
