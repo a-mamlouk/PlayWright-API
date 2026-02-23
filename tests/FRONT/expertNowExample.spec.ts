@@ -1,7 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { ExpertNowPage } from './pages/expertNowPage';
 
-test.describe('ExpertNow Website - Page Object Model Tests', () => {
+test.describe.configure({ mode: 'serial' });
+test.describe('ExpertNow Website - Page Object Model Tests',{
+    tag: '@expertnow',
+    annotation: {
+      type: 'front-end test',
+      description: 'testing front-end functionality and page elements of the ExpertNow website using Playwright and Page Object Model design pattern',
+    },
+  }, () => {
   let expertNowPage: ExpertNowPage;
 
   test.beforeEach(async ({ page }) => {
@@ -9,7 +16,7 @@ test.describe('ExpertNow Website - Page Object Model Tests', () => {
     await expertNowPage.goto();
   });
 
-  test('should load the homepage successfully', async ({ page }) => {
+  test('should load the homepage successfully', async () => {
     // Verify page title
     const title = await expertNowPage.getPageTitle();
     expect(title).toContain('ExpertNow');
@@ -80,14 +87,23 @@ test.describe('ExpertNow Website - Page Object Model Tests', () => {
     expect(page.url()).toContain('contact');
   });
 
-  test('should have external social media links', async ({ page }) => {
+  test('should have external social media links', async () => {
+    // Scroll to footer/social links
+    await expertNowPage.scrollToSection('Connect With Us');
+    
     // Verify LinkedIn link
-    const linkedinUrl = await expertNowPage.page.locator('a[href*="linkedin"]').first().getAttribute('href');
-    expect(linkedinUrl).toContain('linkedin');
+    const linkedinLink = expertNowPage.page.locator('a[href*="linkedin"]').first();
+    await linkedinLink.scrollIntoViewIfNeeded();
+    expect(linkedinLink).toBeEnabled();
+    const linkedinUrl = await linkedinLink.getAttribute('href');
+    expect(linkedinUrl).toEqual('https://fr.linkedin.com/company/expertnow-consulting');
 
     // Verify GitHub link
-    const githubUrl = await expertNowPage.page.locator('a[href*="github"]').first().getAttribute('href');
-    expect(githubUrl).toContain('github');
+    const githubLink = expertNowPage.page.locator('a[href*="github"]').first();
+    await githubLink.scrollIntoViewIfNeeded();
+    expect(githubLink).toBeEnabled();
+    const githubUrl = await githubLink.getAttribute('href');
+    expect(githubUrl).toEqual('https://github.com/expertnow');
   });
 
   test('should scroll to services section', async () => {
