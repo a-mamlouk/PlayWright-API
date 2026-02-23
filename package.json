@@ -2,13 +2,17 @@
   "name": "playwright-api",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "ui": "playwright test --ui",
+    "show-report": "playwright show-report"
+  },
   "keywords": [],
   "author": "Anas Mamlouk",
   "license": "ISC",
   "description": "Chuck Norris Jokes and a GRAphQL API",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^22.13.0"
   }
 }

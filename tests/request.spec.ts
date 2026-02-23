@@ -21,7 +21,7 @@ test(' req Graph QL', async ({ request }) => {
     const allCountries : CountriesResponse = await allCountriesResponse.json()
     expect(allCountriesResponse.status()).toBe(200)
     expect(allCountries.data.countries).toHaveLength(250)
-    await console.log(allCountries.data.countries)
+    console.log(allCountries.data.countries)
 })
 
 test('Filter Country', async ({ request }) => {

@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 import { ChuckNorrisJoke } from "./type/apiResponse";
 
-test.describe.configure({ mode: 'parallel' });
+test.describe.configure({ mode: 'serial' });
 test.describe('retrieve Chuck Norris joke',{
     annotation: {
       type: 'api joke',

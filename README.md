@@ -23,8 +23,26 @@ This project contains Playwright tests for retrieving and validating Chuck Norri
     yarn install
     ```
 
+3. Initialize Playwright configuration:
+    ```sh
+    npm init playwright@latest
+    ```
+
 ## Running the Tests
 
-To run the tests, use the following command:
-```sh
-npx playwright test --ui 
+### Available Scripts
+
+- **Run all tests in UI mode:**
+  ```sh
+  npm run ui
+  ```
+
+- **Run tests headlessly:**
+  ```sh
+  npm test
+  ```
+
+- **View the last test report:**
+  ```sh
+  npm run show-report
+  ``` 
